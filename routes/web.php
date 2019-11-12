@@ -14,3 +14,29 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login', function () {
+    return ('Logueado');
+});
+
+Route::get('logout', function () {
+    return ('Adios');
+});
+
+Route::get('productos', function () {
+    return ('Productos');
+});
+
+Route::get('productos/show/{id}', function ($id) {
+    return ('Show ' . $id);
+})->where('id', '[0-9]+');
+
+
+Route::get('productos/create', function () {
+    return ('Productos create');
+});
+
+Route::get('productos/edit/{id}', function ($id) {
+    return ('Edit ' . $id);
+})->where('id', '[0-9]+');
+
