@@ -20,7 +20,7 @@ Route::get('login', function () {
 });
 
 Route::get('logout', function () {
-    return ('Adios');
+    return view('auth.logout');
 });
 
 Route::get('productos', function () {
