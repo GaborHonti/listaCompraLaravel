@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Producto;
 
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class ProductoController extends Controller
 
     public function getIndex()
 {
-        return view('productos.index' , array('arrayProductos'=>$this->arrayProductos));
+        $productos = Producto::all();
+        return view('productos.index' , array('arrayProductos'=>$productos));
 }
 public function getCreate()
 {
@@ -17,10 +19,12 @@ public function getCreate()
 }
 public function getShow($id)
 {
-    return view('productos.show', array('producto'=>$this->arrayProductos[$id]));
+    $producto = Producto::findOrFail($id);
+    return view('productos.show', array('producto'=>$producto));
 }
 public function getEdit($id)
 {
-return view('productos.edit', array('id'=>$id));
+    $producto = Producto::findOrFail($id);
+    return view('productos.edit', array('id'=>$producto->id));
 }
 }

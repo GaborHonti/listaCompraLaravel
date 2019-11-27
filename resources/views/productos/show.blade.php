@@ -14,14 +14,24 @@
 
             {{-- TODO: Datos del producto --}}
             <h1 style="min-height:45px; margin-left:15%;">
-                    {{$producto[0]}}
+                    {{$producto->nombre}}
             </h1>
             <h2 style="min-height:45px; margin-left:15%;">
-                    Categoría: {{$producto[1]}}
+                    Categoría: {{$producto->categoria}}
             </h2>
-            <p style="margin-left:15%;"><strong>Estado: </strong>Producto actualmente comprado</p>
-            <button style="background-color:red; margin-left:15%;">Pendiente de compra</button>
-            <button style="background-color:orange; margin-left:2%;">Editar Producto</button>
+            <p style="margin-left:15%;"><strong>Estado: </strong>
+                @if($producto->pendiente)
+                    Producto actualmente disponible.
+                @else
+                    Producto pendiente de compra.
+                @endif
+            </p>
+            @if($producto->pendiente)
+                <a class="btn btn-danger" href="#"> Producto actualmente disponible.</a>
+            @else
+                <a class="btn btn-primary" href="#">Producto pendiente de compra.</a>
+            @endif
+            <a class="btn btn-warning" href="{{ url('/productos/edit/' . $producto->id ) }}">Editar Producto</a>
             <a href="http://www.listacompralaravel.test/" class="btn btn-default btn-lg active" role="button" style="background-color:gray; margin-left:2%;">< Volver al listado</a>
 
         </div>
