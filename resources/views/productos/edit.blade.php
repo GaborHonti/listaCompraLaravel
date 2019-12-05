@@ -8,10 +8,14 @@
               <div class="card-header text-center">
                  Modificar Producto
               </div>
-              <form method="POST">
-                   {{method_field('PUT')}}
-                    @csrf
+              <form action="{{ action('ProductoController@putEdit') }}" method="POST" enctype="multipart/form-data">
+
+                {{method_field('PUT')}}
+
+                @csrf
               <div class="card-body" style="padding:30px">
+
+                <input type="hidden" name="id" value="{{ $producto->id }}">
 
                  {{-- TODO: Abrir el formulario e indicar el método POST --}}
 
@@ -19,19 +23,19 @@
 
                  <div class="form-group">
                     <label for="title">Nombre</label>
-                    <input type="text" name="title" id="title" class="form-control">
+                    <input type="text" name="nombre" id="title" class="form-control" value="{{ $producto->nombre }}">
                  </div>
 
                  <div class="form-group">
                     {{-- TODO: Completa el input para el año --}}
                     <label for="title">Categoria</label>
-                    <input type="text" name="categoria" id="categoria" class="form-control">
+                    <input type="text" name="categoria" id="categoria" class="form-control" value="{{ $producto->categoria }}">
                  </div>
 
                  <div class="form-group">
                     {{-- TODO: Completa el input para el poster --}}
-                    <label for="title">Poster</label>
-                    <input type="text" name="poster" id="poster" class="form-control">
+                    <label for="avatar">Seleccionar imagen del poster:</label>
+                    <input type="file" id="poster" name="poster">
                  </div>
 
 
