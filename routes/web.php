@@ -31,4 +31,6 @@ Route::get('productos/create', 'ProductoController@getCreate');
 
 Route::get('productos/edit/{id}', 'ProductoController@getEdit')->where('id', '[0-9]+');
 
+Route::put('productos/changeComprado', 'ProductoController@putComprar');
+
 

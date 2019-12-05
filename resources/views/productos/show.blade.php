@@ -12,6 +12,11 @@
         </div>
         <div class="col-sm-8">
 
+                <form action="{{ action('ProductoController@putComprar') }}" method="POST">
+                {{method_field('PUT')}}
+                @csrf
+                <input type="hidden" name="id" value="{{ $producto->id }}">
+
             {{-- TODO: Datos del producto --}}
             <h1 style="min-height:45px; margin-left:15%;">
                     {{$producto->nombre}}
@@ -27,13 +32,14 @@
                 @endif
             </p>
             @if($producto->pendiente)
-                <a class="btn btn-danger" href="#"> Producto actualmente disponible.</a>
+                <button type="submit" class="btn btn-danger"> Comprar</button>
             @else
-                <a class="btn btn-primary" href="#">Producto pendiente de compra.</a>
+                <button type="submit" class="btn btn-primary">Producto comprado</button>
             @endif
             <a class="btn btn-warning" href="{{ url('/productos/edit/' . $producto->id ) }}">Editar Producto</a>
             <a href="http://www.listacompralaravel.test/" class="btn btn-default btn-lg active" role="button" style="background-color:gray; margin-left:2%;">< Volver al listado</a>
 
+        </form>
         </div>
     </div>
 

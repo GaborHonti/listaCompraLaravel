@@ -27,4 +27,13 @@ public function getEdit($id)
     $producto = Producto::findOrFail($id);
     return view('productos.edit', array('id'=>$producto->id));
 }
+
+public function putComprar(Request $request) {
+
+    $producto = Producto::findOrFail($request->id);
+    $producto->pendiente = !$producto->pendiente;
+    $producto->save();
+
+    return redirect()->action('ProductoController@getShow', ['id' => $request->id]);
+}
 }
