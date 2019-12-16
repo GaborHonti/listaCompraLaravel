@@ -12,7 +12,7 @@
         </div>
         <div class="col-sm-8">
 
-                <form action="{{ action('ProductoController@putComprar') }}" method="POST">
+                <form action="{{ action('ProductController@changeComprar' , ['product' => $producto]) }}"  method="POST">
                 {{method_field('PUT')}}
                 @csrf
                 <input type="hidden" name="id" value="{{ $producto->id }}">
@@ -36,9 +36,14 @@
             @else
                 <button type="submit" class="btn btn-primary">Producto comprado</button>
             @endif
-            <a class="btn btn-warning" href="{{ url('/productos/edit/' . $producto->id ) }}">Editar Producto</a>
-            <a href="http://www.listacompralaravel.test/" class="btn btn-default btn-lg active" role="button" style="background-color:gray; margin-left:2%;">< Volver al listado</a>
+            <a class="btn btn-warning" href="{{ action('ProductController@edit' , ['product' => $producto]) }}">Editar Producto</a>
+            <a class="btn btn-outline-info" href="{{ action('ProductController@index') }}">Volver al listado</a>
 
+        </form>
+        <form action="{{ action('ProductController@destroy' , ['product' => $producto]) }}" method="POST">
+            {{method_field('DELETE')}}
+            @csrf
+            <button type="submit" class="btn btn-danger">BORRAR PRODUCTO</button>
         </form>
         </div>
     </div>

@@ -9,10 +9,21 @@ use Illuminate\Support\Facades\Storage;
 class ProductoController extends Controller
 {
 
-    public function getIndex()
+    public function getIndex($categoria = null)
+{
+        if($categoria == null){
+             $productos = Producto::all();
+        return view('productos.index' , array('arrayProductos'=>$productos));
+        } else {
+            $productos = Producto::categoria($categoria)->get();
+            return view('productos.index' , array('arrayProductos'=>$productos));
+        }
+
+}
+public function getCategorias()
 {
         $productos = Producto::all();
-        return view('productos.index' , array('arrayProductos'=>$productos));
+        return view('productos.categorias' , array('arrayProductos'=>$productos));
 }
 public function getCreate()
 {

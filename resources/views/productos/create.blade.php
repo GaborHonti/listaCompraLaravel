@@ -8,7 +8,8 @@
           <div class="card-header text-center">
              Añadir producto
           </div>
-          <form method="POST">
+          <form action="{{ action('ProductController@store') }}" method="POST">
+            @csrf
           <div class="card-body" style="padding:30px">
 
              {{-- TODO: Abrir el formulario e indicar el método POST --}}

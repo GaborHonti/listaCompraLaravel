@@ -8,7 +8,7 @@
               <div class="card-header text-center">
                  Modificar Producto
               </div>
-              <form action="{{ action('ProductoController@putEdit') }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ action('ProductController@update' , ['product' => $producto]) }}" method="POST" enctype="multipart/form-data">
 
                 {{method_field('PUT')}}
 

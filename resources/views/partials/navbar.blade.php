@@ -10,13 +10,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item {{ Request::is('catalog') && ! Request::is('catalog/create')? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('/productos')}}">
+                        <a class="nav-link" href="{{url('/products')}}">
                             <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
                             Catálogo
                         </a>
                     </li>
                     <li class="nav-item {{  Request::is('productos/create') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('/productos/create')}}">
+                        <a class="nav-link" href="{{url('/products/create')}}">
                             <span>&#10010</span> Nueva Lista
                         </a>
                     </li>
